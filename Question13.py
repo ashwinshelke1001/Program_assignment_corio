@@ -1,33 +1,20 @@
-def functionOfMaxElement(inputList,low,high):
-    #using Quick sort method
-    if low < high :
-        partionIndex=partitionFunction(inputList,low,high)
-        functionOfMaxElement(inputList,low,partionIndex-1)
-        functionOfMaxElement(inputList,partionIndex+1,high)
-
-def partitionFunction(inputList,low,high):
-    index=(low-1)
-    pivotElement=inputList[high]
-    for index2 in range(low,high):
-        if inputList[index2] <= pivotElement :
-            index+=1
-            inputList[index],inputList[index2]=inputList[index2],inputList[index]
-
-    inputList[ index+1],inputList[high]=inputList[high],inputList[index+1]
-    return (index+1)
-
-        
+def functionOfMaxElement(inputList,inputNumber):
+    maxNumber=inputList[0]
+    for index in range(1,inputNumber):
+        if inputList[index]>maxNumber:
+            maxNumber=inputList[index]
+    return maxNumber        
 
 
 
 def main():
     inputList=[]
-    inputNumber=int(input("enter number u want in list"))
+    inputNumber=int(input("enter number u want in list \n"))
     for index in range(inputNumber):
-        inputElement=int(input("enter element for lisr"))
+        inputElement=int(input("enter element for list \n"))
         inputList +=[inputElement]
-    functionOfMaxElement(inputList,0,inputNumber-1)
-    print("Maximum number is %d "%(inputList[-1]))
+    maxNumber=functionOfMaxElement(inputList,inputNumber)
+    print("Maximum number is ",maxNumber)
 
 
 if __name__=="__main__":
